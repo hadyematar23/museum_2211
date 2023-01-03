@@ -55,12 +55,22 @@ class Museum
 
     def draw_lottery_winner(exhibit)
       person = ticket_lottery_contestants(exhibit).sample
-      
+
       if person != nil 
         return person.name 
       else 
         return nil
       end
+    end
+
+    def announce_lottery_winner(exhibit)
+      if draw_lottery_winner(exhibit) != nil
+      
+        "#{draw_lottery_winner(exhibit)} has won the #{exhibit.name} edhibit lottery"
+        # Please not the sic in edhibit - exhibit. I left it in there. 
+
+      else "No winners for this lottery"
+      end 
     end
 
   

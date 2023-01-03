@@ -155,5 +155,47 @@ RSpec.describe Museum do
     expect(dmns.draw_lottery_winner(gems_and_minerals)).to eq(nil)
   end 
 
+  xit "can announce the lottery winner if there are contestants" do 
+
+    patron_1 = Patron.new("Bob", 0)
+    patron_2 = Patron.new("Sally", 20)
+    patron_3 = Patron.new("Johnny", 5)
+    dmns.add_exhibit(gems_and_minerals)
+    dmns.add_exhibit(dead_sea_scrolls)
+    dmns.add_exhibit(imax)
+    patron_1.add_interest("Dead Sea Scrolls")
+    patron_1.add_interest("Gems and Minerals")
+    patron_2.add_interest("Dead Sea Scrolls")
+    patron_3.add_interest("Dead Sea Scrolls")
+    dmns.admit(patron_1)
+    dmns.admit(patron_2)
+    dmns.admit(patron_3)
+    patron_1.add_interest("IMAX")
+
+    expect(dmns.announce_lottery_winner(imax)).to eq("Bob has won the IMAX edhibit lottery")
+    # I went over the interaction pattern multiple times but didn't see that Bob or anyone listed in iteration 3 had an interest in IMAX. I added that interest here so that the code would work. 
+
+  end 
+
+  it "if no contestants, no winner" do 
+
+    patron_1 = Patron.new("Bob", 0)
+    patron_2 = Patron.new("Sally", 20)
+    patron_3 = Patron.new("Johnny", 5)
+    dmns.add_exhibit(gems_and_minerals)
+    dmns.add_exhibit(dead_sea_scrolls)
+    dmns.add_exhibit(imax)
+    patron_1.add_interest("Dead Sea Scrolls")
+    patron_1.add_interest("Gems and Minerals")
+    patron_2.add_interest("Dead Sea Scrolls")
+    patron_3.add_interest("Dead Sea Scrolls")
+    dmns.admit(patron_1)
+    dmns.admit(patron_2)
+    dmns.admit(patron_3)
+
+    expect(dmns.announce_lottery_winner(gems_and_minerals)).to eq("No winners for this lottery")
+
+  end 
+
   end
 end 
