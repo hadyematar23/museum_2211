@@ -21,5 +21,12 @@ RSpec.describe Museum do
 
   end 
 
+  it "the exhibits are object of Exhibit" do 
+    expect(gems_and_minerals).to be_an_instance_of(Exhibit)
+    expect(dead_sea_scrolls).to be_an_instance_of(Exhibit)
+    expect(imax).to be_an_instance_of(Exhibit)
+
+  end 
+
   end
 end 
