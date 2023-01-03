@@ -49,6 +49,17 @@ RSpec.describe Museum do
 
     expect(dmns.recommend_exhibits(patron_1)).to include(dead_sea_scrolls, gems_and_minerals)
     expect(dmns.recommend_exhibits(patron_2)).to include(imax)
+    # Please note I chose to use include so that the order of the exhibits didn't matter. I could have used to eq if it did, but I wanted it to be more flexible as I'm not sure what's coming in Iteration 3. 
   end 
+
+  it "the museum starts out without any patrons" do 
+    dmns.add_exhibit(gems_and_minerals)
+    dmns.add_exhibit(dead_sea_scrolls)
+    dmns.add_exhibit(imax)
+    patron_1.add_interest("Dead Sea Scrolls")
+    patron_1.add_interest("Gems and Minerals")
+    patron_2.add_interest("IMAX")
+
+    expect(dmns.patrons).to eq([])
   end
 end 
