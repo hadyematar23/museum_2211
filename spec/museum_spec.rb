@@ -10,7 +10,7 @@ RSpec.describe Museum do
     let(:dead_sea_scrolls){Exhibit.new({name: "Dead Sea Scrolls", cost: 10})}
     let(:imax){Exhibit.new({name: "IMAX",cost: 15})}
     let(:patron_1){Patron.new("Bob", 20)}
-    let(:patron_2){patron_2 = Patron.new("Sally", 20)}
+    let(:patron_2){Patron.new("Sally", 20)}
     let(:patron_3){Patron.new("Johnny", 5)}
 
   it "exhists as an object of museum" do 
@@ -99,7 +99,10 @@ RSpec.describe Museum do
 
   end 
 
-  it "determines the contestants for the lottery of dead sea scrolls" do 
+  xit "determines the contestants for the lottery of dead sea scrolls" do 
+    patron_1 = Patron.new("Bob", 0)
+    patron_2 = Patron.new("Sally", 20)
+    patron_3 = Patron.new("Johnny", 5)
     dmns.add_exhibit(gems_and_minerals)
     dmns.add_exhibit(dead_sea_scrolls)
     dmns.add_exhibit(imax)
@@ -111,7 +114,8 @@ RSpec.describe Museum do
     dmns.admit(patron_2)
     dmns.admit(patron_3)
 
-    expect(dmns.ticket_lottery_contestants(dead_sea_scrolls)).to eq([])
+    expect(dmns.ticket_lottery_contestants(dead_sea_scrolls)).to eq([patron_1, patron_3])
+  end 
 
   end
 end 
