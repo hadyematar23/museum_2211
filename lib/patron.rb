@@ -9,6 +9,8 @@ def initialize(name, spending_money)
 end
 
 def add_interest(interest)
+  
   @interests << interest
+  # require 'pry'; binding.pry
   end
 end
