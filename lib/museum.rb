@@ -25,4 +25,8 @@ class Museum
     return reccomendations
     
   end
+
+  def admit(patron)
+    @patrons << patron
+  end
 end
