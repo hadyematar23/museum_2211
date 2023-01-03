@@ -45,9 +45,25 @@ class Museum
         end
       end 
     return hash
+    end 
        
-    
+    def ticket_lottery_contestants(exhibit)
+      contestants = patrons_by_exhibit_interest[exhibit].select do |patron|
+        patron.spending_money < exhibit.cost
+      end      
+    end
+
+    def draw_lottery_winner(exhibit)
+      person = ticket_lottery_contestants(exhibit).sample
+      
+      if person != nil 
+        return person.name 
+      else 
+        return nil
+      end
+    end
+
+  
    
-    
-  end
+
 end
