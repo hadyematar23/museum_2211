@@ -1,6 +1,6 @@
 require 'rspec'
 require './lib/exhibit'
-require './lib/patron'
+# require './lib/patron'
 
 RSpec.describe Exhibit do
   context "happy paths" do 
@@ -13,6 +13,7 @@ RSpec.describe Exhibit do
   it "has a name and cost" do 
     expect(exhibit.name).to eq("Gems and Minerals")
     expect(exhibit.cost).to eq(0)
-  
+
+  end 
   end
 end 
